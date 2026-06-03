@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdi | Tech-Modern Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0b0f17;       /* Deep Cyber Black */
+            --bg-card: #131a26;       /* Card Dark Sleek */
+            --accent-yellow: #ffee00; /* Neon Yellow (Senada kacamata Ferdi) */
+            --accent-purple: #7928ca; /* Electric Purple */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar biar makin keren */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: #222b3c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-yellow); }
+
+        /* Navbar Glassmorphism */
+        .navbar {
+            background-color: rgba(11, 15, 23, 0.7) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 0;
+        }
+        .navbar-brand {
+            color: var(--accent-yellow) !important;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--accent-yellow) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section Premium Layout */
+        .hero-section {
+            padding: 160px 0 100px 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 238, 0, 0.08), transparent 40%),
+                        radial-gradient(circle at 10% 80%, rgba(121, 40, 202, 0.1), transparent 40%);
+        }
+        
+        /* Bingkai Foto Bulat Glow Gen-Z */
+        .profile-img-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto;
+        }
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-purple));
+            z-index: -1;
+            filter: blur(12px);
+            opacity: 0.8;
+            animation: pulseGlow 4s infinite alternate;
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+        }
+
+        @keyframes pulseGlow {
+            0% { filter: blur(8px); opacity: 0.6; }
+            100% { filter: blur(16px); opacity: 0.9; }
+        }
+
+        /* Badge & Title Styling */
+        .tag-dev {
+            background: rgba(255, 238, 0, 0.1);
+            color: var(--accent-yellow);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border: 1px solid rgba(255, 238, 0, 0.2);
+            display: inline-block;
+        }
+        
+        .btn-cyber {
+            background-color: var(--accent-yellow);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+        .btn-cyber:hover {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(255, 238, 0, 0.6);
+            transform: translateY(-3px);
+            color: #000;
+        }
+
+        .btn-outline-cyber {
+            border: 2px solid #222b3c;
+            color: var(--text-light);
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-cyber:hover {
+            background-color: #222b3c;
+            border-color: #222b3c;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Global Section Title */
+        section { padding: 100px 0; }
+        .section-title {
+            font-weight: 800;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Tech Cards Modern */
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            color: var(--text-light);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .custom-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 238, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .icon-box-mesh {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        .custom-card:hover .icon-box-mesh {
+            background: var(--accent-yellow);
+            color: #000 !important;
+        }
+
+        /* Portfolio Cards Project */
+        .project-banner {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #161f30, #0b0f17);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+        .badge-tech {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #06090e;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-link:hover {
+            background: var(--accent-yellow);
+            color: #000;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">FERDI<span style="color:var(--text-light)">.DEV</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portofolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-md-row text-center text-md-start g-5">
+                <div class="col-md-7">
+                    <div class="mb-3"><span class="tag-dev">// FULL-STACK DEVELOPER</span></div>
+                    <h1 class="display-2 fw-bold mb-3" style="letter-spacing: -2px;">Hi, I'm <span style="color: var(--accent-yellow)">Ferdi</span></h1>
+                    <p class="lead text-secondary mb-4 fs-5" style="max-width: 550px; line-height: 1.8;">
+                        Spesialis pembuat aplikasi web modern yang interaktif, bersih, dan berkecepatan tinggi menggunakan ekosistem <span class="text-white fw-bold">Laravel & Filament</span>.
+                    </p>
+                    <div class="d-sm-flex justify-content-center justify-content-md-start gap-3">
+                        <a href="#portfolio" class="btn btn-cyber btn-lg mb-3 mb-sm-0 d-block">Lihat Project</a>
+                        <a href="#contact" class="btn btn-outline-cyber btn-lg d-block">Hubungi Saya</a>
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <div class="profile-img-container">
+                        <img src="ferdi.jpg" alt="Ferdi" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6">
+                    <h2 class="section-title text-start mb-4">Tentang Saya</h2>
+                    <p class="text-secondary mb-4 lh-lg">Saya mendesain dan membangun logika aplikasi web dari nol. Menggabungkan kreativitas desain front-end dengan kekuatan arsitektur backend menggunakan Laravel, saya berfokus menciptakan produk digital yang menyelesaikan masalah.</p>
+                    <p class="text-secondary lh-lg">Sangat menyukai penulisan kode yang rapi (*clean code*), optimasi performa web, dan integrasi admin panel yang instan namun bertenaga lewat Filament PHP.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card custom-card p-4 p-lg-5">
+                        <h4 class="fw-bold mb-4" style="color: var(--accent-yellow)">Core Focus & Values</h4>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-bolt text-warning fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold text-white">High Performance Code</h6>
+                                <small class="text-secondary">Website ringan, cepat diakses, dan ramah mobile-first.</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-shield-halved text-info fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold text-white">Robust Security Backend</h6>
+                                <small class="text-secondary">Arsitektur backend Laravel yang aman dari ancaman celah keamanan.</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-layer-group text-purple fs-4 me-3 mt-1" style="color: var(--accent-purple)"></i>
+                            <div>
+                                <h6 class="fw-bold text-white">Interactive Dashboard Control</h6>
+                                <small class="text-secondary">Manajemen data super cepat dan mudah dipahami dengan Filament PHP.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: #090d13;">
+        <div class="container">
+            <h2 class="section-title text-center">Tech Stack Utama</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-3">
+                    <div class="card custom-card p-4 h-100 text-center text-md-start">
+                        <div class="icon-box-mesh text-danger mx-auto mx-md-0"><i class="fab fa-html5"></i></div>
+                        <h5 class="fw-bold mb-2">HTML5 & CSS3</h5>
+                        <p class="text-secondary small mb-0 d-none d-md-block">Struktur semantik standar industri dengan kustomisasi gaya modern.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card custom-card p-4 h-100 text-center text-md-start">
+                        <div class="icon-box-mesh mx-auto mx-md-0" style="color: #7952b3;"><i class="fab fa-bootstrap"></i></div>
+                        <h5 class="fw-bold mb-2">Bootstrap 5</h5>
+                        <p class="text-secondary small mb-0 d-none d-md-block">Framework CSS andalan untuk layouting responsif super kilat.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card custom-card p-4 h-100 text-center text-md-start">
+                        <div class="icon-box-mesh text-danger mx-auto mx-md-0"><i class="fab fa-laravel"></i></div>
+                        <h5 class="fw-bold mb-2">Laravel</h5>
+                        <p class="text-secondary small mb-0 d-none d-md-block">Arsitektur MVC PHP yang tangguh untuk memproses logika sistem rumit.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card custom-card p-4 h-100 text-center text-md-start">
+                        <div class="icon-box-mesh mx-auto mx-md-0" style="color: var(--accent-yellow);"><i class="fas fa-cubes"></i></div>
+                        <h5 class="fw-bold mb-2">Filament PHP</h5>
+                        <p class="text-secondary small mb-0 d-none d-md-block">TCO dashboard super interaktif berbasis TALL Stack untuk efisiensi admin panel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title text-center text-md-start">Selected Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 overflow-hidden">
+                        <div class="project-banner">
+                            <i class="fas fa-shopping-bag" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2 text-white">E-Commerce Application</h5>
+                            <p class="text-secondary small mb-4">Sistem toko online interaktif lengkap dengan manajemen produk, keranjang, dan checkout berbasis Laravel.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge-tech">Laravel</span>
+                                <span class="badge-tech">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 overflow-hidden">
+                        <div class="project-banner">
+                            <i class="fas fa-sliders" style="color: var(--accent-yellow);"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2 text-white">Enterprise Admin Dashboard</h5>
+                            <p class="text-secondary small mb-4">Sistem manajemen data internal perusahaan skala besar yang dibangun super cepat & aman pakai Filament.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge-tech">Laravel</span>
+                                <span class="badge-tech">Filament Panel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 overflow-hidden">
+                        <div class="project-banner">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-2 text-white">Company Profile Interactive</h5>
+                            <p class="text-secondary small mb-4">Website profil perusahaan interaktif beranimasi halus, ringan diakses, dan sepenuhnya mobile-friendly.</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge-tech">HTML/CSS3</span>
+                                <span class="badge-tech">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: #090d13;">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3 display-5">Let's Build Something Huge Together!</h2>
+            <p class="text-secondary mb-5 mx-auto" style="max-width: 500px;">Punya ide proyek, kebutuhan sistem kustom, atau tawaran kolaborasi kerja? Silakan hubungi saya.</p>
+            
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:emailmu@domain.com" class="social-link" title="Kirim Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-secondary py-4">
+        <small class="small">&copy; 2026 Ferdi. Designed for the Next-Gen Digital Era.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
