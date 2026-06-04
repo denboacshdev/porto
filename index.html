@@ -129,6 +129,7 @@
             border-radius: 12px;
             padding: 12px 30px;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         .btn-outline-cyber:hover {
             background-color: #222b3c;
@@ -199,7 +200,7 @@
             font-weight: 600;
         }
 
-        /* Footer */
+        /* Footer & Social Icons */
         footer {
             background-color: #06090e;
             border-top: 1px solid rgba(255,255,255,0.02);
@@ -217,10 +218,28 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
+        
+        /* Hover Effects with Custom Brand Colors */
         .social-link:hover {
-            background: var(--accent-yellow);
-            color: #000;
             transform: scale(1.1);
+        }
+        .social-link.wa-btn:hover {
+            background-color: #25d366 !important;
+            color: #fff !important;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+        .social-link.ig-btn:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+            color: #fff !important;
+            box-shadow: 0 0 15px rgba(220, 39, 67, 0.5);
+        }
+        .social-link.gh-btn:hover {
+            background-color: #24292e !important;
+            color: #fff !important;
+        }
+        .social-link.in-btn:hover {
+            background-color: #0077b5 !important;
+            color: #fff !important;
         }
     </style>
 </head>
@@ -256,7 +275,7 @@
                     </p>
                     <div class="d-sm-flex justify-content-center justify-content-md-start gap-3">
                         <a href="#portfolio" class="btn btn-cyber btn-lg mb-3 mb-sm-0 d-block">Lihat Project</a>
-                        <a href="#contact" class="btn btn-outline-cyber btn-lg d-block">Hubungi Saya</a>
+                        <a href="https://wa.me/6283171715438?text=Halo%20Denboacsh,%20saya%20tertarik%20untuk%20membuat%20proyek%20website." target="_blank" class="btn btn-outline-cyber btn-lg d-block">Hubungi Saya</a>
                     </div>
                 </div>
                 <div class="col-md-5 text-center">
@@ -401,9 +420,16 @@
             <p class="text-secondary mb-5 mx-auto" style="max-width: 500px;">Punya ide proyek, kebutuhan sistem kustom, atau tawaran kolaborasi kerja? Silakan hubungi saya.</p>
             
             <div class="d-flex justify-content-center gap-3">
-                <a href="mailto:emailmu@domain.com" class="social-link" title="Kirim Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <!-- WhatsApp Link -->
+                <a href="https://wa.me/6283171715438?text=Halo%20Denboacsh,%20saya%20tertarik%20untuk%20bekerja%20sama." target="_blank" class="social-link wa-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                
+                <!-- Instagram Link -->
+                <a href="https://instagram.com/denboacsh" target="_blank" class="social-link ig-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                
+                <!-- GitHub Link -->
+                <a href="https://github.com/denboacshdev" =
+"_blank" class="social-link gh-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                
             </div>
         </div>
     </section>
